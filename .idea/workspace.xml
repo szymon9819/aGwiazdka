@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18812a96-b3ae-44d2-be40-cd29b89b93aa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Punkt.py" beforeDir="false" afterPath="$PROJECT_DIR$/Punkt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aGwiazdka.py" beforeDir="false" afterPath="$PROJECT_DIR$/aGwiazdka.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grid.txt" beforeDir="false" afterPath="$PROJECT_DIR$/grid.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -186,7 +182,7 @@
       <workItem from="1575754517803" duration="12336000" />
       <workItem from="1576525441956" duration="3645000" />
       <workItem from="1576586130931" duration="43488000" />
-      <workItem from="1576758170771" duration="9597000" />
+      <workItem from="1576758170771" duration="9957000" />
     </task>
     <servers />
   </component>
@@ -210,6 +206,6 @@
     <SUITE FILE_PATH="coverage/robotyka$test.coverage" NAME="test Coverage Results" MODIFIED="1576762040860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/robotyka$123.coverage" NAME="123 Coverage Results" MODIFIED="1575324332330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/robotyka$Map.coverage" NAME="Map Coverage Results" MODIFIED="1575318789170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/robotyka$aGwiazdka.coverage" NAME="aGwiazdka Coverage Results" MODIFIED="1576767763124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/robotyka$aGwiazdka.coverage" NAME="aGwiazdka Coverage Results" MODIFIED="1576768115145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
