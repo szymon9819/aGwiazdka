@@ -1,9 +1,8 @@
 import math
 from Punkt import Punkt
 
-punktKoncowy = Punkt(11, 0)
-tmp=Punkt(11,0)
-punktStartowy = Punkt(1, 0)
+punktKoncowy = Punkt(0, 19)
+punktStartowy = Punkt(19, 0)
 listaZamknieta = []
 listaOtwarta = []
 mapa = []
@@ -34,114 +33,129 @@ def heurystyka(x, y):
 
 def dodajOtwarta(pkt):
     potomek = Punkt
-
+    print("\npoczatek funkcji dodajOtwarta, ilość elementow otwarta:" + str(len(listaOtwarta)))
     # dol
-    if pkt.wsp_x + 1 < 20 and mapaPkt[pkt.wsp_x + 1][pkt.wsp_y].wart != 5 and czyNaLiscie(
-            mapaPkt[pkt.wsp_x + 1][pkt.wsp_y]) is False:
-        if potomek.rodzic_x is None:
-            potomek.rodzic_x = pkt.wsp_x
-            potomek.rodzic_y = pkt.wsp_y
-            potomek.wsp_x = pkt.wsp_x + 1
-            potomek.wsp_y = pkt.wsp_y
-            potomek.koszt = obliczKoszt(potomek)
-            listaOtwarta.append(potomek)
-            print("rodzic "+ str(pkt.wsp_x) +"," +str(pkt.wsp_y) +"\tdol potomek " + str(potomek.rodzic_x) +","+ str(potomek.rodzic_y) +"\tkosz: "+ str(potomek.koszt))
+    if pkt.wsp_x + 1 < 20 and mapaPkt[pkt.wsp_x + 1][pkt.wsp_y].wart != '5' and czyNaLiscie(
+            mapaPkt[pkt.wsp_x + 1][pkt.wsp_y]) is False and mapaPkt[pkt.wsp_x + 1][pkt.wsp_y].rodzic_x is None:
+        potomek = mapaPkt[pkt.wsp_x + 1][pkt.wsp_y]
+        potomek.rodzic_x = pkt.wsp_x
+        potomek.rodzic_y = pkt.wsp_y
+        mapaPkt[pkt.wsp_x + 1][pkt.wsp_y] = potomek
+        obliczKoszt(potomek)
+        listaOtwarta.append(potomek)
+        print("rodzic " + str(pkt.wsp_x) + "," + str(pkt.wsp_y) + "\tdol potomek " + str(
+            potomek.wsp_x) + "," + str(potomek.wsp_y) + "\tkosz: " + str(potomek.koszt))
+        potomek = Punkt
 
     # lewa
-    if pkt.wsp_y - 1 >= 0 and mapa[pkt.wsp_x][pkt.wsp_y - 1] != 5 and czyNaLiscie(
-            mapaPkt[pkt.wsp_x][pkt.wsp_y - 1]) is False:
-        if potomek.rodzic_x is None:
-            potomek.rodzic_x = pkt.wsp_x
-            potomek.rodzic_y = pkt.wsp_y
-            potomek.wsp_x = pkt.wsp_x
-            potomek.wsp_y = pkt.wsp_y - 1
-            potomek.koszt = obliczKoszt(potomek)
-            listaOtwarta.append(potomek)
-            print("rodzic "+ str(pkt.wsp_x) +"," +str(pkt.wsp_y) +"\tlewa potomek " + str(potomek.rodzic_x)+"," + str(potomek.rodzic_y) +"\tkosz: "+ str(potomek.koszt))
+    if pkt.wsp_y - 1 >= 0 and mapaPkt[pkt.wsp_x][pkt.wsp_y - 1].wart != '5' and czyNaLiscie(
+            mapaPkt[pkt.wsp_x][pkt.wsp_y - 1]) is False and mapaPkt[pkt.wsp_x][pkt.wsp_y - 1].rodzic_x is None:
+        potomek = mapaPkt[pkt.wsp_x][pkt.wsp_y - 1]
+        potomek.rodzic_x = pkt.wsp_x
+        potomek.rodzic_y = pkt.wsp_y
+        mapaPkt[pkt.wsp_x][pkt.wsp_y - 1] = potomek
+        obliczKoszt(potomek)
+        listaOtwarta.append(potomek)
+        print("rodzic " + str(pkt.wsp_x) + "," + str(pkt.wsp_y) + "\tlewa potomek " + str(
+            potomek.wsp_x) + "," + str(potomek.wsp_y) + "\tkosz: " + str(potomek.koszt))
+        potomek = Punkt
 
-    # gora
-    if pkt.wsp_x - 1 >= 0 and mapaPkt[pkt.wsp_x - 1][pkt.wsp_y].wart != 5 and czyNaLiscie(
-            mapaPkt[pkt.wsp_x - 1][pkt.wsp_y]) is False:
-        if potomek.rodzic_x is None:
-            potomek.rodzic_x = pkt.wsp_x
-            potomek.rodzic_y = pkt.wsp_y
-            potomek.wsp_x = pkt.wsp_x - 1
-            potomek.wsp_y = pkt.wsp_y
-            potomek.koszt = obliczKoszt(potomek)
-            listaOtwarta.append(potomek)
-            print("rodzic "+ str(pkt.wsp_x) +"," +str(pkt.wsp_y) +"\tgora potomek " + str(potomek.rodzic_x) +","+ str(potomek.rodzic_y) +"\tkoszt: "+ str(potomek.koszt))
+    # góra
+    if pkt.wsp_x - 1 >= 0 and mapaPkt[pkt.wsp_x - 1][pkt.wsp_y].wart != '5' and czyNaLiscie(
+            mapaPkt[pkt.wsp_x - 1][pkt.wsp_y]) is False and mapaPkt[pkt.wsp_x - 1][pkt.wsp_y].rodzic_x is None:
+        potomek = mapaPkt[pkt.wsp_x - 1][pkt.wsp_y]
+        potomek.rodzic_x = pkt.wsp_x
+        potomek.rodzic_y = pkt.wsp_y
+        mapaPkt[pkt.wsp_x - 1][pkt.wsp_y] = potomek
+        obliczKoszt(potomek)
+        listaOtwarta.append(potomek)
+        print("rodzic " + str(pkt.wsp_x) + "," + str(pkt.wsp_y) + "\tgora potomek " + str(
+            potomek.wsp_x) + "," + str(potomek.wsp_y) + "\tkosz: " + str(potomek.koszt))
+        potomek = Punkt
 
     # prawa
-    if pkt.wsp_y + 1 < 20 and mapa[pkt.wsp_x][pkt.wsp_y + 1] != 5 and czyNaLiscie(
-            mapaPkt[pkt.wsp_x][pkt.wsp_y + 1]) is False:
-        if potomek.rodzic_x is None:
-            potomek.rodzic_x = pkt.wsp_x
-            potomek.rodzic_y = pkt.wsp_y
-            potomek.wsp_x = pkt.wsp_x
-            potomek.wsp_y = pkt.wsp_y + 1
-            potomek.koszt = obliczKoszt(potomek)
-            listaOtwarta.append(potomek)
-            print("rodzic "+ str(pkt.wsp_x) +"," +str(pkt.wsp_y) +"\tprawa potomek " + str(potomek.wsp_x)+"," + str(potomek.wsp_y) +"\tkoszt: "+ str(potomek.koszt))
+    if pkt.wsp_y + 1 < 20 and mapaPkt[pkt.wsp_x][pkt.wsp_y + 1].wart != '5' and czyNaLiscie(
+            mapaPkt[pkt.wsp_x][pkt.wsp_y + 1]) is False and mapaPkt[pkt.wsp_x][pkt.wsp_y + 1].rodzic_x is None:
+        potomek = mapaPkt[pkt.wsp_x][pkt.wsp_y + 1]
+        potomek.rodzic_x = pkt.wsp_x
+        potomek.rodzic_y = pkt.wsp_y
+        mapaPkt[pkt.wsp_x][pkt.wsp_y + 1] = potomek
+        obliczKoszt(potomek)
+        listaOtwarta.append(potomek)
+        print("rodzic " + str(pkt.wsp_x) + "," + str(pkt.wsp_y) + "\tprawa potomek " + str(
+            potomek.wsp_x) + "," + str(potomek.wsp_y) + "\tkosz: " + str(potomek.koszt))
+        potomek = Punkt
+
+    for i in listaOtwarta:
+        print("Oywarta pkt: " + str(i.wsp_x) + " " + str(i.wsp_y))
+    print("\nkoniec funkcji dodajOtwarta \n")
 
 
 def obliczKoszt(pkt):
     heur = heurystyka(pkt.wsp_x, pkt.wsp_y)
-
+    print("heurystyka: " + str(heur))
     koszt = 0
+    pom = pkt
     wart = True
     while wart:
-        if punktStartowy.wsp_x == pkt.wsp_x and punktStartowy.wsp_y == pkt.wsp_y:
+        pom = mapaPkt[pom.rodzic_x][pom.rodzic_y]
+        koszt += 1
+        if punktStartowy.wsp_x == pom.wsp_x and punktStartowy.wsp_y == pom.wsp_y:
             wart = False
-            return koszt + heur
-        else:
-            pkt = mapaPkt[pkt.rodzic_x][pkt.rodzic_y]
-            koszt += 1
-    return koszt + heur
+
+    pkt.koszt = koszt + heur
 
 
 def czyNaLiscie(pkt):
-    for i in range(listaZamknieta.__len__() - 1):
-        if listaZamknieta[i].wsp_x == pkt.wsp_x and listaZamknieta[i].wsp_y == pkt.wsp_y:
+    for i in listaZamknieta:
+        if i.wsp_x == pkt.wsp_x and i.wsp_y == pkt.wsp_y:
             return True
     return False
 
 
 def najmniejszyKoszt():
-    # znalezienie punktu z najmniejszym kosztem
-    punktNaj = listaOtwarta[listaOtwarta.__len__() - 1]
-    for i in range(listaOtwarta.__len__() - 1, -1, -1):
-        if listaOtwarta[i].koszt < punktNaj.koszt:
-            punktNaj = listaOtwarta[i]
-    return punktNaj
+    try:
+        naj = listaOtwarta[len(listaOtwarta) - 1]
+        for i in listaOtwarta:
+            if naj.koszt > i.koszt:
+                naj = i
+        return naj
+    except IndexError as e:
+        print("poza zakresem")
 
 
 def doZamknietej():
-    punktNaj: Punkt = najmniejszyKoszt()
-    print("wynik funkcji doZamknie")
-    wyswietl(listaOtwarta)
-    for i in range(listaOtwarta.__len__() - 1):
+    punktNaj = najmniejszyKoszt()
+    print("\nwynik funkcji doZamknie")
+    for i in range(listaOtwarta.__len__() - 1, -1, -1):
         if listaOtwarta[i].wsp_x == punktNaj.wsp_x and listaOtwarta[i].wsp_y == punktNaj.wsp_y:
             del listaOtwarta[i]
-    #wyswietl(listaOtwarta)
-    print("koniec funkcji doZamknie")
+    # wyswietl(listaOtwarta)
     listaZamknieta.append(punktNaj)
+    for i in listaZamknieta:
+        print("Zamknieta pkt: " + str(i.wsp_x) + " " + str(i.wsp_y))
+    print("koniec funkcji doZamknie")
 
 
-def mapaKoncowa(pkt):
-
-    while True:
-        mapa[pkt.wsp_x][pkt.wsp_y] = 3
+def mapaKoncowa():
+    pkt = mapaPkt[punktKoncowy.wsp_x][punktKoncowy.wsp_y]
+    print("mapaKoncowa")
+    wart = True
+    while wart:
+        mapa[pkt.wsp_x][pkt.wsp_y] = '3'
         pkt = mapaPkt[pkt.rodzic_x][pkt.rodzic_y]
         if punktStartowy.wsp_x == pkt.wsp_x and punktStartowy.wsp_y == pkt.wsp_y:
-            break
+            wart = False
 
 
 def wyswietlMape():
     for i in mapa:
         print(i)
-def wyswietl(lista):
-    for i in lista:
-        print("element listy zamknietej " + str(lista.wsp_x) + "," + str(lista.wsp_y))
+
+
+def wyswietlZ():
+    for i in listaZamknieta:
+        print("element listy zamknietej " + str(i.wsp_x) + "," + str(i.wsp_y))
 
 
 def gwiazdka():
@@ -150,23 +164,32 @@ def gwiazdka():
     # wyswietlMape()
     listaZamknieta.append(punktStartowy)
     dodajOtwarta(listaZamknieta[0])
-    mapa[punktStartowy.wsp_x][punktStartowy.wsp_y] = 3
+    print("pierwze element")
+    for i in listaOtwarta:
+        print("element listy otwartej " + str(i.wsp_x) + "," + str(i.wsp_y))
+    wyswietlZ()
+    mapa[punktStartowy.wsp_x][punktStartowy.wsp_y] = '3'
+    mapa[punktKoncowy.wsp_x][punktKoncowy.wsp_y] = '3'
     # indeks do iteracji po zamknietej liscie
     pom = 1
 
     while True:
         if listaOtwarta.__len__() == 0:
             print("nie mozna dotrzec do celu")
+        print("\n\nIteracja: " + str(pom))
 
         doZamknietej()
-        print("element listy zamknietej " + str(listaZamknieta[pom].wsp_x) + "," + str(listaZamknieta[pom].wsp_y))
+
         dodajOtwarta(listaZamknieta[pom])
-        print("element listy otwartej " + str(listaOtwarta[pom-1].wsp_x)+","+str(listaOtwarta[pom-1].wsp_y))
+
+        for i in listaOtwarta:
+            print("element listy otwartej " + str(i.wsp_x) + "," + str(i.wsp_y))
+
         pom += 1
-        if not czyNaLiscie(punktKoncowy):
+        if czyNaLiscie(punktKoncowy):
             break
-    mapaKoncowa(punktKoncowy)
-  #  wyswietlMape()
+    mapaKoncowa()
+    wyswietlMape()
 
 
 gwiazdka()

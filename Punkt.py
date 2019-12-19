@@ -1,8 +1,8 @@
 class Punkt:
-    wsp_x = 0
-    wsp_y = 0
-    wart = 0
-    koszt = 0.0
+    wsp_x = None
+    wsp_y = None
+    wart = None
+    koszt = None
 
     rodzic_x = None
     rodzic_y = None
