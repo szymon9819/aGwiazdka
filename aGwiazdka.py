@@ -32,50 +32,34 @@ def heurystyka(x, y):
 
 
 def dodajOtwarta(pkt):
-    potomek = Punkt
     # dol
     if pkt.wsp_x + 1 < 20 and mapaPkt[pkt.wsp_x + 1][pkt.wsp_y].wart != '5' and czyNaLiscie(
             mapaPkt[pkt.wsp_x + 1][pkt.wsp_y]) is False and mapaPkt[pkt.wsp_x + 1][pkt.wsp_y].rodzic_x is None:
-        potomek = mapaPkt[pkt.wsp_x + 1][pkt.wsp_y]
-        potomek.rodzic_x = pkt.wsp_x
-        potomek.rodzic_y = pkt.wsp_y
-        mapaPkt[pkt.wsp_x + 1][pkt.wsp_y] = potomek
-        obliczKoszt(potomek)
-        listaOtwarta.append(potomek)
-        potomek = Punkt
-
+        mapaPkt[pkt.wsp_x + 1][pkt.wsp_y].rodzic_x = pkt.wsp_x
+        mapaPkt[pkt.wsp_x + 1][pkt.wsp_y].rodzic_y = pkt.wsp_y
+        obliczKoszt(mapaPkt[pkt.wsp_x + 1][pkt.wsp_y])
+        listaOtwarta.append(mapaPkt[pkt.wsp_x + 1][pkt.wsp_y])
     # lewa
     if pkt.wsp_y - 1 >= 0 and mapaPkt[pkt.wsp_x][pkt.wsp_y - 1].wart != '5' and czyNaLiscie(
             mapaPkt[pkt.wsp_x][pkt.wsp_y - 1]) is False and mapaPkt[pkt.wsp_x][pkt.wsp_y - 1].rodzic_x is None:
-        potomek = mapaPkt[pkt.wsp_x][pkt.wsp_y - 1]
-        potomek.rodzic_x = pkt.wsp_x
-        potomek.rodzic_y = pkt.wsp_y
-        mapaPkt[pkt.wsp_x][pkt.wsp_y - 1] = potomek
-        obliczKoszt(potomek)
-        listaOtwarta.append(potomek)
-        potomek = Punkt
-
+        mapaPkt[pkt.wsp_x][pkt.wsp_y - 1].rodzic_x = pkt.wsp_x
+        mapaPkt[pkt.wsp_x][pkt.wsp_y - 1].rodzic_y = pkt.wsp_y
+        obliczKoszt(mapaPkt[pkt.wsp_x][pkt.wsp_y - 1])
+        listaOtwarta.append(mapaPkt[pkt.wsp_x][pkt.wsp_y - 1])
     # góra
     if pkt.wsp_x - 1 >= 0 and mapaPkt[pkt.wsp_x - 1][pkt.wsp_y].wart != '5' and czyNaLiscie(
             mapaPkt[pkt.wsp_x - 1][pkt.wsp_y]) is False and mapaPkt[pkt.wsp_x - 1][pkt.wsp_y].rodzic_x is None:
-        potomek = mapaPkt[pkt.wsp_x - 1][pkt.wsp_y]
-        potomek.rodzic_x = pkt.wsp_x
-        potomek.rodzic_y = pkt.wsp_y
-        mapaPkt[pkt.wsp_x - 1][pkt.wsp_y] = potomek
-        obliczKoszt(potomek)
-        listaOtwarta.append(potomek)
-        potomek = Punkt
-
+        mapaPkt[pkt.wsp_x - 1][pkt.wsp_y].rodzic_x = pkt.wsp_x
+        mapaPkt[pkt.wsp_x - 1][pkt.wsp_y].rodzic_y = pkt.wsp_y
+        obliczKoszt(mapaPkt[pkt.wsp_x - 1][pkt.wsp_y])
+        listaOtwarta.append(mapaPkt[pkt.wsp_x - 1][pkt.wsp_y])
     # prawa
     if pkt.wsp_y + 1 < 20 and mapaPkt[pkt.wsp_x][pkt.wsp_y + 1].wart != '5' and czyNaLiscie(
             mapaPkt[pkt.wsp_x][pkt.wsp_y + 1]) is False and mapaPkt[pkt.wsp_x][pkt.wsp_y + 1].rodzic_x is None:
-        potomek = mapaPkt[pkt.wsp_x][pkt.wsp_y + 1]
-        potomek.rodzic_x = pkt.wsp_x
-        potomek.rodzic_y = pkt.wsp_y
-        mapaPkt[pkt.wsp_x][pkt.wsp_y + 1] = potomek
-        obliczKoszt(potomek)
-        listaOtwarta.append(potomek)
-        potomek = Punkt
+        mapaPkt[pkt.wsp_x][pkt.wsp_y + 1].rodzic_x = pkt.wsp_x
+        mapaPkt[pkt.wsp_x][pkt.wsp_y + 1].rodzic_y = pkt.wsp_y
+        obliczKoszt(mapaPkt[pkt.wsp_x][pkt.wsp_y + 1])
+        listaOtwarta.append(mapaPkt[pkt.wsp_x][pkt.wsp_y + 1])
 
 
 def obliczKoszt(pkt):
@@ -146,7 +130,7 @@ def gwiazdka():
     while True:
         if listaOtwarta.__len__() == 0:
             print("nie mozna dotrzec do celu")
-        print("\n\nIteracja: " + str(pom))
+        print("Iteracja: " + str(pom))
         doZamknietej()
         dodajOtwarta(listaZamknieta[pom])
         pom += 1
@@ -157,3 +141,51 @@ def gwiazdka():
 
 
 gwiazdka()
+
+
+
+# def dodajOtwarta(pkt):
+#     potomek = Punkt
+#     # dol
+#     if pkt.wsp_x + 1 < 20 and mapaPkt[pkt.wsp_x + 1][pkt.wsp_y].wart != '5' and czyNaLiscie(
+#             mapaPkt[pkt.wsp_x + 1][pkt.wsp_y]) is False and mapaPkt[pkt.wsp_x + 1][pkt.wsp_y].rodzic_x is None:
+#         potomek = mapaPkt[pkt.wsp_x + 1][pkt.wsp_y]
+#         potomek.rodzic_x = pkt.wsp_x
+#         potomek.rodzic_y = pkt.wsp_y
+#         mapaPkt[pkt.wsp_x + 1][pkt.wsp_y] = potomek
+#         obliczKoszt(potomek)
+#         listaOtwarta.append(potomek)
+#         potomek = Punkt
+#
+#     # lewa
+#     if pkt.wsp_y - 1 >= 0 and mapaPkt[pkt.wsp_x][pkt.wsp_y - 1].wart != '5' and czyNaLiscie(
+#             mapaPkt[pkt.wsp_x][pkt.wsp_y - 1]) is False and mapaPkt[pkt.wsp_x][pkt.wsp_y - 1].rodzic_x is None:
+#         potomek = mapaPkt[pkt.wsp_x][pkt.wsp_y - 1]
+#         potomek.rodzic_x = pkt.wsp_x
+#         potomek.rodzic_y = pkt.wsp_y
+#         mapaPkt[pkt.wsp_x][pkt.wsp_y - 1] = potomek
+#         obliczKoszt(potomek)
+#         listaOtwarta.append(potomek)
+#         potomek = Punkt
+#
+#     # góra
+#     if pkt.wsp_x - 1 >= 0 and mapaPkt[pkt.wsp_x - 1][pkt.wsp_y].wart != '5' and czyNaLiscie(
+#             mapaPkt[pkt.wsp_x - 1][pkt.wsp_y]) is False and mapaPkt[pkt.wsp_x - 1][pkt.wsp_y].rodzic_x is None:
+#         potomek = mapaPkt[pkt.wsp_x - 1][pkt.wsp_y]
+#         potomek.rodzic_x = pkt.wsp_x
+#         potomek.rodzic_y = pkt.wsp_y
+#         mapaPkt[pkt.wsp_x - 1][pkt.wsp_y] = potomek
+#         obliczKoszt(potomek)
+#         listaOtwarta.append(potomek)
+#         potomek = Punkt
+#
+#     # prawa
+#     if pkt.wsp_y + 1 < 20 and mapaPkt[pkt.wsp_x][pkt.wsp_y + 1].wart != '5' and czyNaLiscie(
+#             mapaPkt[pkt.wsp_x][pkt.wsp_y + 1]) is False and mapaPkt[pkt.wsp_x][pkt.wsp_y + 1].rodzic_x is None:
+#         potomek = mapaPkt[pkt.wsp_x][pkt.wsp_y + 1]
+#         potomek.rodzic_x = pkt.wsp_x
+#         potomek.rodzic_y = pkt.wsp_y
+#         mapaPkt[pkt.wsp_x][pkt.wsp_y + 1] = potomek
+#         obliczKoszt(potomek)
+#         listaOtwarta.append(potomek)
+#         potomek = Punkt
